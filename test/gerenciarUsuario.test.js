@@ -9,12 +9,18 @@ const { expect } = require('chai')
 describe("Testar as funcoes de gerenciamento de usuarios", function () {
     it('Validar que posso adicionar um novo nome de usuario na lista', function () {
         // 1 - adicionar novo nome, ou seja, chamar a funcao de adicionar
-        adicionaUsuario('Thanos')
+        adicionaUsuario(
+            {
+                nome: 'Thanos',
+                email: 'thanos@hotmail.com'
+            }
+        );
 
         // 2 - validar que o nome foi adicionado, chamando a lista.
         const listaUsuarios = retornaUsuario();
 
         // 3 - validar que o novo nome esta no fim da lista de usuarios
-        expect(listaUsuarios.at(-1)).to.equal('Thanos') //o at retorna o ultimo item da lista
+       // expect(listaUsuarios.at(-1).nome).to.equal('Thanos') //o at[-1] retorna o ultimo item da lista
+        expect(listaUsuarios.at(-1).nome).to.equal('Thanos')
     })
 })
